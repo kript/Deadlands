@@ -17,7 +17,7 @@ my $pattern = $ARGV{-p};
 my ($deck, $card, $coord, $trait, $name); 
 $deck       = DL_Deck -> new(deck_wrap     => 0,
                              shuffle_times => 25);
-$deck -> shuffle();
+$deck -> shuffle_self();
 $card = $deck -> draw_card();
 $coord = $deck -> get_coord($card);
 $trait = $deck -> get_trait($card);

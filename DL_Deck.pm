@@ -7,6 +7,7 @@ package DL_Deck;
 $VERSION = 1.00;
 
 use strict;
+use List::Util qw(shuffle);
 
 BEGIN { 
    $SIG{__WARN__} = sub { warn @_ unless $_[0] =~ /Use of uninitialized value/ }; 
@@ -54,15 +55,9 @@ sub set_attr { ($_[0]->_accessible($_[1], 'w'))?($_[0]->{$_[1]} = $_[2]):(undef)
 
 # Deck Methods
 
-sub shuffle {
-    for (my $iter = 1; $iter <= $_[0]->get_attr('shuffle_times'); $iter++) {
-        for (my $i = @_deck; --$i; ) {
-            my $j = int(rand($i+1));
-            if ($i == $j) { next; }
-            @_deck[$i,$j] = @_deck[$j,$i];
-        }
-    }
-    1;
+sub shuffle_self {
+    #using List::Util::shuffle to make code cleaner
+    @_deck = shuffle(@_deck);
 }
 
 sub draw_card { 
