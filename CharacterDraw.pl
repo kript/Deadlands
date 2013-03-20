@@ -11,7 +11,7 @@ my ($deck, $card, $coord, $trait, $mysterious_past);
 $deck       = DL_Deck -> new(deck_wrap     => 0);
 $deck -> shuffle_self();
 
-for(my $i=1;$i<12;$i++)
+for(my $i=0;$i<12;$i++)
 {
     $mysterious_past = '';
     $card = $deck -> draw_card();
